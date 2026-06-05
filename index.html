@@ -4,21 +4,39 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy — DeskReset</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #f7f5f0;
-      --ink: #1a1a18;
-      --muted: #6b6b63;
-      --accent: #2d6a4f;
-      --rule: #d8d4cc;
-      --card: #ffffff;
+      /* Naturals base */
+      --cream:        #f7f5f0;
+      --cream-deep:   #ede9e0;
+      --ink:          #1a1a18;
+      --ink-soft:     #333330;
+      --muted:        #6b6b63;
+      --rule:         #d8d4cc;
+      --white:        #ffffff;
+
+      /* Moss accent (Wednesday / evergreen / brand) */
+      --moss:         #5a7a5a;
+      --moss-deep:    #3d5c3d;
+      --moss-light:   #e8f0e8;
+      --moss-mid:     #c4d4c4;
+
+      /* Terracotta warm touch */
+      --terra:        #c17a5a;
+      --terra-light:  #f5ede8;
+
+      /* Dusty blue cool touch */
+      --blue:         #6b8fa8;
+      --blue-light:   #e8f0f5;
     }
 
+    html { scroll-behavior: smooth; }
+
     body {
-      background: var(--bg);
+      background: var(--cream);
       color: var(--ink);
       font-family: 'DM Sans', sans-serif;
       font-weight: 300;
@@ -26,190 +44,435 @@
       min-height: 100vh;
     }
 
+    /* ── HEADER ─────────────────────────────────────────── */
     header {
+      background: var(--white);
       border-bottom: 1px solid var(--rule);
-      padding: 2.5rem 0 2rem;
+      padding: 2.25rem 1.5rem 2rem;
       text-align: center;
-      background: var(--card);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 15% 50%, var(--moss-light) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 85% 30%, var(--terra-light) 0%, transparent 70%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .header-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--moss-deep);
+      border-radius: 12px;
+      margin-bottom: 0.85rem;
+    }
+
+    .logo-mark svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: var(--white);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .wordmark {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.6rem;
-      letter-spacing: -0.02em;
-      color: var(--accent);
+      font-size: 1.65rem;
+      letter-spacing: -0.025em;
+      color: var(--moss-deep);
+      line-height: 1;
     }
 
-    .wordmark span {
+    .wordmark em {
+      font-style: normal;
       color: var(--ink);
     }
 
     .tagline {
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-top: 0.35rem;
+      margin-top: 0.4rem;
     }
 
+    /* ── NAV STRIP ──────────────────────────────────────── */
+    .doc-nav {
+      background: var(--cream-deep);
+      border-bottom: 1px solid var(--rule);
+      padding: 0.6rem 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+    }
+
+    .doc-nav a {
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .doc-nav a:hover { background: var(--white); color: var(--ink); }
+    .doc-nav a.active { background: var(--moss-deep); color: var(--white); }
+
+    /* ── MAIN ───────────────────────────────────────────── */
     main {
-      max-width: 680px;
+      max-width: 700px;
       margin: 0 auto;
-      padding: 3rem 1.5rem 5rem;
+      padding: 3.5rem 1.5rem 6rem;
+    }
+
+    /* ── PAGE HEADER ────────────────────────────────────── */
+    .page-header {
+      margin-bottom: 2.75rem;
+      padding-bottom: 2.75rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .doc-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--moss-deep);
+      background: var(--moss-light);
+      border: 1px solid var(--moss-mid);
+      border-radius: 20px;
+      padding: 0.2rem 0.75rem;
+      margin-bottom: 1rem;
     }
 
     .page-title {
       font-family: 'DM Serif Display', serif;
-      font-size: 2.4rem;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
+      font-size: 2.6rem;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
     }
 
     .meta {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--muted);
       letter-spacing: 0.04em;
-      margin-bottom: 2.5rem;
-      padding-bottom: 2.5rem;
-      border-bottom: 1px solid var(--rule);
     }
 
+    /* ── SUMMARY BOX ────────────────────────────────────── */
     .summary-box {
-      background: var(--accent);
-      color: #fff;
-      border-radius: 8px;
-      padding: 1.5rem 1.75rem;
-      margin-bottom: 3rem;
+      background: var(--moss-deep);
+      color: var(--white);
+      border-radius: 12px;
+      padding: 1.6rem 1.85rem;
+      margin-bottom: 3.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .summary-box::before {
+      content: '"';
+      position: absolute;
+      right: 1.5rem;
+      top: -0.5rem;
+      font-family: 'DM Serif Display', serif;
+      font-size: 7rem;
+      color: var(--white);
+      opacity: 0.08;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .summary-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 0.6rem;
     }
 
     .summary-box p {
-      font-size: 0.95rem;
-      line-height: 1.65;
+      font-size: 0.97rem;
+      line-height: 1.7;
       font-weight: 400;
+      color: var(--white);
+      margin: 0;
     }
 
-    .summary-box strong {
-      font-weight: 500;
-    }
-
+    /* ── SECTIONS ───────────────────────────────────────── */
     section {
       margin-bottom: 2.75rem;
     }
 
+    .section-number {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--moss);
+      margin-bottom: 0.35rem;
+    }
+
     h2 {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.25rem;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.75rem;
+      font-size: 1.3rem;
+      letter-spacing: -0.015em;
+      margin-bottom: 0.85rem;
       color: var(--ink);
+      line-height: 1.3;
     }
 
     p {
       font-size: 0.95rem;
-      color: #333330;
+      color: var(--ink-soft);
       margin-bottom: 0.75rem;
+      line-height: 1.75;
     }
 
+    p:last-child { margin-bottom: 0; }
+
+    /* ── LISTS ──────────────────────────────────────────── */
     ul {
       list-style: none;
       padding: 0;
-      margin: 0.5rem 0 0.75rem;
+      margin: 0.75rem 0 0.85rem;
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      overflow: hidden;
     }
 
     ul li {
-      font-size: 0.95rem;
-      color: #333330;
-      padding: 0.3rem 0 0.3rem 1.25rem;
+      font-size: 0.93rem;
+      color: var(--ink-soft);
+      padding: 0.7rem 1.25rem 0.7rem 3rem;
       position: relative;
+      border-bottom: 1px solid var(--rule);
+      line-height: 1.6;
     }
+
+    ul li:last-child { border-bottom: none; }
 
     ul li::before {
-      content: '→';
+      content: '';
       position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-size: 0.8rem;
-      top: 0.35rem;
+      left: 1.1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 6px;
+      background: var(--moss);
+      border-radius: 50%;
     }
 
-    hr {
-      border: none;
-      border-top: 1px solid var(--rule);
-      margin: 2.75rem 0;
+    /* ── DIVIDER ────────────────────────────────────────── */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 3rem 0;
     }
 
-    .contact-box {
-      background: var(--card);
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    .section-divider-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--cream-deep);
       border: 1px solid var(--rule);
-      border-radius: 8px;
-      padding: 1.5rem 1.75rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
+
+    .section-divider-icon svg {
+      width: 12px;
+      height: 12px;
+      fill: var(--muted);
+    }
+
+    /* ── CONTACT BOX ────────────────────────────────────── */
+    .contact-box {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 1.6rem 1.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .contact-box p { margin: 0; }
 
     .contact-box a {
-      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--moss-deep);
       text-decoration: none;
       font-weight: 500;
+      font-size: 0.97rem;
+      margin-top: 0.25rem;
     }
 
-    .contact-box a:hover {
-      text-decoration: underline;
+    .contact-box a:hover { text-decoration: underline; }
+
+    .contact-box a svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
     }
 
+    /* ── FOOTER ─────────────────────────────────────────── */
     footer {
+      background: var(--white);
+      border-top: 1px solid var(--rule);
+      padding: 2rem 1.5rem;
       text-align: center;
-      padding: 2rem;
+    }
+
+    .footer-wordmark {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: var(--moss-deep);
+      margin-bottom: 0.35rem;
+    }
+
+    .footer-wordmark em { font-style: normal; color: var(--ink); }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .footer-links a {
       font-size: 0.78rem;
       color: var(--muted);
-      border-top: 1px solid var(--rule);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+    }
+
+    .footer-links a:hover { color: var(--ink); }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 480px) {
+      .page-title { font-size: 2rem; }
+      main { padding: 2.5rem 1.25rem 5rem; }
+      .summary-box { padding: 1.35rem 1.4rem; }
+      ul li { padding-left: 2.5rem; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="wordmark">Desk<span>Reset</span></div>
-    <div class="tagline">Move a little. Feel a lot better.</div>
+    <div class="header-inner">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 4c-1.5 3-4 5-4 8a4 4 0 008 0c0-3-2.5-5-4-8z"/>
+          <line x1="12" y1="16" x2="12" y2="20"/>
+          <line x1="9" y1="20" x2="15" y2="20"/>
+        </svg>
+      </div>
+      <div class="wordmark">Desk<em>Reset</em></div>
+      <div class="tagline">Move a little. Feel a lot better.</div>
+    </div>
   </header>
 
+  <nav class="doc-nav">
+    <a href="#" class="active">Privacy Policy</a>
+    <a href="terms-of-service.html">Terms of Service</a>
+  </nav>
+
   <main>
-    <h1 class="page-title">Privacy Policy</h1>
-    <p class="meta">Effective date: June 1, 2026 &nbsp;·&nbsp; Last updated: June 3, 2026</p>
+
+    <div class="page-header">
+      <div class="doc-label">Legal</div>
+      <h1 class="page-title">Privacy Policy</h1>
+      <p class="meta">Effective date: June 1, 2026 &nbsp;·&nbsp; Last updated: June 1, 2026</p>
+    </div>
 
     <div class="summary-box">
-      <p><strong>The short version:</strong> DeskReset keeps your personal data to a minimum. Workout history and settings live on your device. Sign-in is handled by Google. Subscriptions are handled by Google Play. We do not sell your data or use it for advertising.</p>
+      <div class="summary-label">The short version</div>
+      <p>DeskReset does not collect, store, or transmit your personal data. Everything stays on your device. We access your calendar only when you explicitly grant permission, and only to schedule the workouts you ask for.</p>
     </div>
 
     <section>
+      <div class="section-number">01</div>
       <h2>Who we are</h2>
       <p>DeskReset is a bodyweight exercise app for home office workers, developed by Noah Allard ("we," "us," or "our"). This policy explains how the app handles your information.</p>
     </section>
 
     <section>
+      <div class="section-number">02</div>
+      <h2>Information we do not collect</h2>
+      <p>DeskReset does not collect, transmit, or store any personal information on external servers. This includes:</p>
+      <ul>
+        <li>Your name, email address, or account information</li>
+        <li>Location data</li>
+        <li>Health or fitness metrics beyond what you log within the app</li>
+        <li>Device identifiers or advertising IDs</li>
+        <li>Usage analytics or crash reporting</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="section-number">03</div>
       <h2>Data stored on your device</h2>
-      <p>The following data is stored locally on your device only and is never transmitted to us:</p>
+      <p>DeskReset stores the following data locally on your device only:</p>
       <ul>
         <li>Your workout history and session logs</li>
         <li>App preferences and settings you configure</li>
         <li>Your fitness level and program progress</li>
-        <li>Notification preferences and scheduled reminder times</li>
-        <li>Office hours and calendar preferences</li>
       </ul>
+      <p>This data never leaves your device and is not accessible to us.</p>
     </section>
 
     <section>
-      <h2>Account &amp; sign-in</h2>
-      <p>DeskReset uses Google Sign-In, powered by Firebase Authentication, to create and manage your account. When you sign in with Google:</p>
-      <ul>
-        <li>Google shares your name and email address with Firebase to create your account</li>
-        <li>Firebase stores a minimal account record (user ID, email, display name) to identify your session</li>
-        <li>We use your first name to personalise your in-app experience</li>
-        <li>We do not store passwords — authentication is handled entirely by Google</li>
-      </ul>
-      <p>Firebase Authentication is operated by Google LLC. You can review Google's privacy practices at <a href="https://policies.google.com/privacy" style="color:#2d6a4f;font-weight:500;">policies.google.com/privacy</a>.</p>
-    </section>
-
-    <section>
+      <div class="section-number">04</div>
       <h2>Calendar access</h2>
       <p>DeskReset may request access to your device calendar if you choose to schedule workouts. This access is:</p>
       <ul>
@@ -222,60 +485,51 @@
     </section>
 
     <section>
-      <h2>Payments &amp; subscriptions</h2>
-      <p>DeskReset offers an optional paid subscription. All payments are processed by the platform store you use (Google Play on Android, App Store on iOS). We do not collect or store your payment card details or any financial information.</p>
-      <p>Subscription status is verified through RevenueCat, a third-party service that communicates with the platform store on our behalf. RevenueCat receives your platform store customer ID and subscription status to confirm whether your subscription is active. No payment details are shared with RevenueCat.</p>
-      <p>RevenueCat's privacy policy is available at <a href="https://www.revenuecat.com/privacy" style="color:#2d6a4f;font-weight:500;">revenuecat.com/privacy</a>.</p>
+      <div class="section-number">05</div>
+      <h2>Third-party services</h2>
+      <p>DeskReset does not currently integrate with any third-party analytics, advertising, or data services.</p>
+      <p>We may offer optional sign-in with Google or Apple in a future version of the app. If and when that feature is added, this policy will be updated before release. Any such integration will be designed so that we do not store your authentication data.</p>
     </section>
 
     <section>
-      <h2>Push notifications</h2>
-      <p>DeskReset can send optional daily reminders to prompt you to take movement breaks. Notifications are:</p>
-      <ul>
-        <li>Entirely optional — you control whether they are enabled and when they fire</li>
-        <li>Scheduled locally on your device using Android's alarm system</li>
-        <li>Not routed through any external notification server</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Information we do not collect</h2>
-      <p>DeskReset does not collect or use any of the following:</p>
-      <ul>
-        <li>Location data</li>
-        <li>Health metrics or biometric data</li>
-        <li>Device identifiers or advertising IDs</li>
-        <li>Usage analytics or crash reporting</li>
-        <li>Any data for advertising purposes</li>
-      </ul>
-    </section>
-
-    <section>
+      <div class="section-number">06</div>
       <h2>Children's privacy</h2>
       <p>DeskReset is intended for users 18 years of age and older. We do not knowingly collect any information from children under 13.</p>
     </section>
 
     <section>
+      <div class="section-number">07</div>
       <h2>Changes to this policy</h2>
       <p>If we make material changes to this privacy policy, we will update the "Last updated" date at the top of this page. We encourage you to review this policy periodically.</p>
     </section>
 
-    <hr />
+    <div class="section-divider">
+      <div class="section-divider-icon">
+        <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="2"/></svg>
+      </div>
+    </div>
 
     <section>
+      <div class="section-number">08</div>
       <h2>Contact us</h2>
       <div class="contact-box">
-        <p>Questions about this privacy policy or how DeskReset handles your data:</p>
-        <p><a href="mailto:help@deskresetapp.info">help@deskresetapp.info</a></p>
-        <p style="margin-top:1rem;">General developer enquiries:</p>
-        <p><a href="mailto:dev@deskresetapp.info">dev@deskresetapp.info</a></p>
+        <p>If you have any questions about this privacy policy or how DeskReset handles your data, please contact us at:</p>
+        <a href="mailto:help@deskresetapp.info">
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          help@deskresetapp.info
+        </a>
       </div>
     </section>
 
   </main>
 
   <footer>
-    &copy; 2026 Noah Allard &middot; DeskReset &middot; All rights reserved
+    <div class="footer-wordmark">Desk<em>Reset</em></div>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 Noah Allard · All rights reserved</div>
   </footer>
 
 </body>
