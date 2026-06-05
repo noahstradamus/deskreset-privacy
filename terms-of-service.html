@@ -4,21 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terms of Service — DeskReset</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #f7f5f0;
-      --ink: #1a1a18;
-      --muted: #6b6b63;
-      --accent: #2d6a4f;
-      --rule: #d8d4cc;
-      --card: #ffffff;
+      --cream:        #f7f5f0;
+      --cream-deep:   #ede9e0;
+      --ink:          #1a1a18;
+      --ink-soft:     #333330;
+      --muted:        #6b6b63;
+      --rule:         #d8d4cc;
+      --white:        #ffffff;
+
+      --moss:         #5a7a5a;
+      --moss-deep:    #3d5c3d;
+      --moss-light:   #e8f0e8;
+      --moss-mid:     #c4d4c4;
+
+      --terra:        #c17a5a;
+      --terra-light:  #f5ede8;
+
+      --blue:         #6b8fa8;
+      --blue-light:   #e8f0f5;
     }
 
+    html { scroll-behavior: smooth; }
+
     body {
-      background: var(--bg);
+      background: var(--cream);
       color: var(--ink);
       font-family: 'DM Sans', sans-serif;
       font-weight: 300;
@@ -26,265 +40,592 @@
       min-height: 100vh;
     }
 
+    /* ── HEADER ─────────────────────────────────────────── */
     header {
+      background: var(--white);
       border-bottom: 1px solid var(--rule);
-      padding: 2.5rem 0 2rem;
+      padding: 2.25rem 1.5rem 2rem;
       text-align: center;
-      background: var(--card);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 15% 50%, var(--moss-light) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 85% 30%, var(--terra-light) 0%, transparent 70%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .header-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--moss-deep);
+      border-radius: 12px;
+      margin-bottom: 0.85rem;
+    }
+
+    .logo-mark svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: var(--white);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .wordmark {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.6rem;
-      letter-spacing: -0.02em;
-      color: var(--accent);
+      font-size: 1.65rem;
+      letter-spacing: -0.025em;
+      color: var(--moss-deep);
+      line-height: 1;
     }
 
-    .wordmark span {
+    .wordmark em {
+      font-style: normal;
       color: var(--ink);
     }
 
     .tagline {
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-top: 0.35rem;
+      margin-top: 0.4rem;
     }
 
+    /* ── NAV STRIP ──────────────────────────────────────── */
+    .doc-nav {
+      background: var(--cream-deep);
+      border-bottom: 1px solid var(--rule);
+      padding: 0.6rem 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+    }
+
+    .doc-nav a {
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .doc-nav a:hover { background: var(--white); color: var(--ink); }
+    .doc-nav a.active { background: var(--moss-deep); color: var(--white); }
+
+    /* ── MAIN ───────────────────────────────────────────── */
     main {
-      max-width: 680px;
+      max-width: 700px;
       margin: 0 auto;
-      padding: 3rem 1.5rem 5rem;
+      padding: 3.5rem 1.5rem 6rem;
+    }
+
+    /* ── PAGE HEADER ────────────────────────────────────── */
+    .page-header {
+      margin-bottom: 2.75rem;
+      padding-bottom: 2.75rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .doc-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--moss-deep);
+      background: var(--moss-light);
+      border: 1px solid var(--moss-mid);
+      border-radius: 20px;
+      padding: 0.2rem 0.75rem;
+      margin-bottom: 1rem;
     }
 
     .page-title {
       font-family: 'DM Serif Display', serif;
-      font-size: 2.4rem;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
+      font-size: 2.6rem;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
     }
 
     .meta {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--muted);
       letter-spacing: 0.04em;
-      margin-bottom: 2.5rem;
-      padding-bottom: 2.5rem;
-      border-bottom: 1px solid var(--rule);
     }
 
+    /* ── SUMMARY BOX ────────────────────────────────────── */
     .summary-box {
-      background: var(--accent);
-      color: #fff;
-      border-radius: 8px;
-      padding: 1.5rem 1.75rem;
-      margin-bottom: 3rem;
+      background: var(--moss-deep);
+      color: var(--white);
+      border-radius: 12px;
+      padding: 1.6rem 1.85rem;
+      margin-bottom: 3.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .summary-box::before {
+      content: '"';
+      position: absolute;
+      right: 1.5rem;
+      top: -0.5rem;
+      font-family: 'DM Serif Display', serif;
+      font-size: 7rem;
+      color: var(--white);
+      opacity: 0.08;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .summary-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 0.6rem;
     }
 
     .summary-box p {
-      font-size: 0.95rem;
-      line-height: 1.65;
+      font-size: 0.97rem;
+      line-height: 1.7;
       font-weight: 400;
+      color: var(--white);
+      margin: 0;
     }
 
-    .summary-box strong {
+    /* ── SECTION GROUPS ─────────────────────────────────── */
+    .section-group {
+      margin-bottom: 3rem;
+    }
+
+    .section-group-label {
+      font-size: 0.68rem;
       font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--rule);
     }
 
     section {
-      margin-bottom: 2.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-number {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--moss);
+      margin-bottom: 0.35rem;
     }
 
     h2 {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.25rem;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.75rem;
+      font-size: 1.3rem;
+      letter-spacing: -0.015em;
+      margin-bottom: 0.85rem;
       color: var(--ink);
+      line-height: 1.3;
     }
 
     p {
       font-size: 0.95rem;
-      color: #333330;
+      color: var(--ink-soft);
       margin-bottom: 0.75rem;
+      line-height: 1.75;
     }
 
+    p:last-child { margin-bottom: 0; }
+
+    p a {
+      color: var(--moss-deep);
+      text-decoration: none;
+      font-weight: 400;
+    }
+
+    p a:hover { text-decoration: underline; }
+
+    /* ── LISTS ──────────────────────────────────────────── */
     ul {
       list-style: none;
       padding: 0;
-      margin: 0.5rem 0 0.75rem;
+      margin: 0.75rem 0 0.85rem;
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      overflow: hidden;
     }
 
     ul li {
-      font-size: 0.95rem;
-      color: #333330;
-      padding: 0.3rem 0 0.3rem 1.25rem;
+      font-size: 0.93rem;
+      color: var(--ink-soft);
+      padding: 0.7rem 1.25rem 0.7rem 3rem;
       position: relative;
+      border-bottom: 1px solid var(--rule);
+      line-height: 1.6;
     }
+
+    ul li:last-child { border-bottom: none; }
 
     ul li::before {
-      content: '→';
+      content: '';
       position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-size: 0.8rem;
-      top: 0.35rem;
+      left: 1.1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 6px;
+      background: var(--moss);
+      border-radius: 50%;
     }
 
-    hr {
-      border: none;
-      border-top: 1px solid var(--rule);
-      margin: 2.75rem 0;
+    ul li strong {
+      font-weight: 500;
+      color: var(--ink);
     }
 
-    .contact-box {
-      background: var(--card);
+    /* ── HIGHLIGHT BOX (health warning) ─────────────────── */
+    .highlight-box {
+      background: var(--terra-light);
+      border: 1px solid #e0c0b0;
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin: 0.75rem 0 0.85rem;
+    }
+
+    .highlight-box p {
+      font-size: 0.93rem;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+
+    /* ── DIVIDER ────────────────────────────────────────── */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 3rem 0;
+    }
+
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    .section-divider-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--cream-deep);
       border: 1px solid var(--rule);
-      border-radius: 8px;
-      padding: 1.5rem 1.75rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
+
+    .section-divider-icon svg {
+      width: 12px;
+      height: 12px;
+      fill: var(--muted);
+    }
+
+    /* ── CONTACT BOX ────────────────────────────────────── */
+    .contact-box {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 1.6rem 1.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .contact-box p { margin: 0; }
 
     .contact-box a {
-      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--moss-deep);
       text-decoration: none;
       font-weight: 500;
+      font-size: 0.97rem;
+      margin-top: 0.25rem;
     }
 
-    .contact-box a:hover {
-      text-decoration: underline;
+    .contact-box a:hover { text-decoration: underline; }
+
+    .contact-box a svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
     }
 
+    /* ── FOOTER ─────────────────────────────────────────── */
     footer {
+      background: var(--white);
+      border-top: 1px solid var(--rule);
+      padding: 2rem 1.5rem;
       text-align: center;
-      padding: 2rem;
+    }
+
+    .footer-wordmark {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: var(--moss-deep);
+      margin-bottom: 0.35rem;
+    }
+
+    .footer-wordmark em { font-style: normal; color: var(--ink); }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .footer-links a {
       font-size: 0.78rem;
       color: var(--muted);
-      border-top: 1px solid var(--rule);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+    }
+
+    .footer-links a:hover { color: var(--ink); }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 480px) {
+      .page-title { font-size: 2rem; }
+      main { padding: 2.5rem 1.25rem 5rem; }
+      .summary-box { padding: 1.35rem 1.4rem; }
+      ul li { padding-left: 2.5rem; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="wordmark">Desk<span>Reset</span></div>
-    <div class="tagline">Move a little. Feel a lot better.</div>
+    <div class="header-inner">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 4c-1.5 3-4 5-4 8a4 4 0 008 0c0-3-2.5-5-4-8z"/>
+          <line x1="12" y1="16" x2="12" y2="20"/>
+          <line x1="9" y1="20" x2="15" y2="20"/>
+        </svg>
+      </div>
+      <div class="wordmark">Desk<em>Reset</em></div>
+      <div class="tagline">Move a little. Feel a lot better.</div>
+    </div>
   </header>
 
+  <nav class="doc-nav">
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="#" class="active">Terms of Service</a>
+  </nav>
+
   <main>
-    <h1 class="page-title">Terms of Service</h1>
-    <p class="meta">Effective date: June 4, 2026 &nbsp;·&nbsp; Last updated: June 4, 2026</p>
+
+    <div class="page-header">
+      <div class="doc-label">Legal</div>
+      <h1 class="page-title">Terms of Service</h1>
+      <p class="meta">Effective date: June 4, 2026 &nbsp;·&nbsp; Last updated: June 4, 2026</p>
+    </div>
 
     <div class="summary-box">
-      <p><strong>The short version:</strong> DeskReset is a bodyweight exercise app for desk workers. Use it safely, pay for your subscription through Google Play, cancel any time. We're not personal trainers and we're not liable for injuries. Questions? Email us.</p>
+      <div class="summary-label">The short version</div>
+      <p>DeskReset is a bodyweight exercise app for desk workers. Use it safely, pay for your subscription through Google Play, cancel any time. We're not personal trainers and we're not liable for injuries. Questions? Email us.</p>
+    </div>
+
+    <!-- GROUP: About -->
+    <div class="section-group">
+      <div class="section-group-label">About</div>
+
+      <section>
+        <div class="section-number">01</div>
+        <h2>Who we are</h2>
+        <p>DeskReset is a bodyweight exercise application developed and operated by Noah Allard ("we," "us," or "our"), based in Washington State, USA. By downloading or using DeskReset, you agree to these Terms of Service ("Terms").</p>
+        <p>If you do not agree to these Terms, please do not use the app.</p>
+      </section>
+
+      <section>
+        <div class="section-number">02</div>
+        <h2>Who can use DeskReset</h2>
+        <p>DeskReset is intended for users who are 18 years of age or older. By using the app you confirm that you meet this requirement.</p>
+        <p>DeskReset is designed for general wellness and light exercise. It is not a medical product and is not intended to diagnose, treat, cure, or prevent any health condition.</p>
+      </section>
+
+      <section>
+        <div class="section-number">03</div>
+        <h2>Health and safety</h2>
+        <p>Exercise carries inherent risk. Before starting any new exercise program, especially if you have a pre-existing medical condition, injury, or health concern, consult a qualified healthcare provider.</p>
+        <p>By using DeskReset you acknowledge that:</p>
+        <ul>
+          <li>You are voluntarily participating in physical activity</li>
+          <li>You are solely responsible for exercising within your own physical limits</li>
+          <li>You will stop immediately if you experience pain, dizziness, shortness of breath, or discomfort</li>
+          <li>The app's guidance does not substitute for professional medical or fitness advice</li>
+        </ul>
+        <p>We are not liable for any injury, illness, or adverse outcome resulting from use of the app.</p>
+      </section>
+    </div>
+
+    <!-- GROUP: Subscriptions -->
+    <div class="section-group">
+      <div class="section-group-label">Subscriptions &amp; Billing</div>
+
+      <section>
+        <div class="section-number">04</div>
+        <h2>Free trial</h2>
+        <p>DeskReset may offer a free trial period for new subscribers. The length of the trial will be clearly stated at the time of sign-up. Your trial begins when you start it in the app and ends automatically at the conclusion of the stated period.</p>
+        <p>If you do not cancel before the trial ends, your chosen subscription will activate and your payment method will be charged. You can cancel at any time before the trial ends through the Google Play Store to avoid being charged.</p>
+      </section>
+
+      <section>
+        <div class="section-number">05</div>
+        <h2>Subscriptions and billing</h2>
+        <p>Full access to DeskReset requires an active subscription. We offer the following plans:</p>
+        <ul>
+          <li><strong>Monthly</strong> — billed once per month</li>
+          <li><strong>Annual</strong> — billed once per year</li>
+        </ul>
+        <p>All subscriptions are processed and managed through the Google Play Store. Prices are displayed in the app before purchase and may vary by region. By subscribing you authorize Google Play to charge your payment method on a recurring basis at the stated interval.</p>
+        <p>We do not collect or store your payment information. All billing is handled by Google Play under their own terms and privacy policy.</p>
+      </section>
+
+      <section>
+        <div class="section-number">06</div>
+        <h2>Cancellation and refunds</h2>
+        <p>You may cancel your subscription at any time through the Google Play Store (Play Store → Subscriptions → DeskReset → Cancel). Cancellation takes effect at the end of the current billing period — you will retain access until then.</p>
+        <p>We do not issue refunds for partial subscription periods. Refund requests for billing errors or exceptional circumstances may be submitted to Google Play in accordance with their refund policy, or to us at <a href="mailto:help@deskresetapp.info">help@deskresetapp.info</a>.</p>
+      </section>
+
+      <section>
+        <div class="section-number">07</div>
+        <h2>Price changes</h2>
+        <p>We may change subscription prices at any time. If we increase the price of your current plan, we will notify you in advance through the app or by email. Price changes take effect at your next renewal. If you do not agree to a price change, you may cancel before the new price takes effect.</p>
+      </section>
+    </div>
+
+    <!-- GROUP: Legal -->
+    <div class="section-group">
+      <div class="section-group-label">Legal</div>
+
+      <section>
+        <div class="section-number">08</div>
+        <h2>Acceptable use</h2>
+        <p>You agree to use DeskReset only for its intended purpose as a personal wellness tool. You may not:</p>
+        <ul>
+          <li>Reverse engineer, decompile, or modify the app</li>
+          <li>Resell or sublicense access to the app</li>
+          <li>Use the app in any way that violates applicable law</li>
+          <li>Attempt to circumvent subscription or access controls</li>
+        </ul>
+      </section>
+
+      <section>
+        <div class="section-number">09</div>
+        <h2>Intellectual property</h2>
+        <p>All content in DeskReset — including exercise descriptions, workout programs, copy, graphics, and the DeskReset name and logo — is owned by Noah Allard and protected by applicable intellectual property law. Nothing in these Terms grants you any rights to that content beyond personal use of the app.</p>
+      </section>
+
+      <section>
+        <div class="section-number">10</div>
+        <h2>Disclaimer of warranties</h2>
+        <p>DeskReset is provided "as is" and "as available" without warranties of any kind, express or implied. We do not warrant that the app will be uninterrupted, error-free, or free of harmful components. We make no warranty that the exercise content is appropriate for your individual fitness level or health status.</p>
+      </section>
+
+      <section>
+        <div class="section-number">11</div>
+        <h2>Limitation of liability</h2>
+        <p>To the maximum extent permitted by applicable law, Noah Allard shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of your use of DeskReset, including but not limited to personal injury, property damage, or loss of data.</p>
+        <p>Our total liability to you for any claim arising from use of the app shall not exceed the amount you paid for your current subscription period.</p>
+      </section>
+
+      <section>
+        <div class="section-number">12</div>
+        <h2>Governing law</h2>
+        <p>These Terms are governed by the laws of the State of Washington, USA, without regard to conflict of law principles. Any disputes arising from these Terms or your use of DeskReset shall be resolved in the courts of Washington State.</p>
+      </section>
+
+      <section>
+        <div class="section-number">13</div>
+        <h2>Changes to these Terms</h2>
+        <p>We may update these Terms from time to time. When we do, we will update the "Last updated" date at the top of this page. If changes are material, we will notify you through the app or by email. Continued use of DeskReset after changes take effect constitutes acceptance of the revised Terms.</p>
+      </section>
+    </div>
+
+    <div class="section-divider">
+      <div class="section-divider-icon">
+        <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="2"/></svg>
+      </div>
     </div>
 
     <section>
-      <h2>Who we are</h2>
-      <p>DeskReset is a bodyweight exercise application developed and operated by Noah Allard ("we," "us," or "our"), based in Washington State, USA. By downloading or using DeskReset, you agree to these Terms of Service ("Terms").</p>
-      <p>If you do not agree to these Terms, please do not use the app.</p>
-    </section>
-
-    <section>
-      <h2>Who can use DeskReset</h2>
-      <p>DeskReset is intended for users who are 18 years of age or older. By using the app you confirm that you meet this requirement.</p>
-      <p>DeskReset is designed for general wellness and light exercise. It is not a medical product and is not intended to diagnose, treat, cure, or prevent any health condition.</p>
-    </section>
-
-    <section>
-      <h2>Health and safety</h2>
-      <p>Exercise carries inherent risk. Before starting any new exercise program, especially if you have a pre-existing medical condition, injury, or health concern, consult a qualified healthcare provider.</p>
-      <p>By using DeskReset you acknowledge that:</p>
-      <ul>
-        <li>You are voluntarily participating in physical activity</li>
-        <li>You are solely responsible for exercising within your own physical limits</li>
-        <li>You will stop immediately if you experience pain, dizziness, shortness of breath, or discomfort</li>
-        <li>The app's guidance does not substitute for professional medical or fitness advice</li>
-      </ul>
-      <p>We are not liable for any injury, illness, or adverse outcome resulting from use of the app.</p>
-    </section>
-
-    <section>
-      <h2>Free trial</h2>
-      <p>DeskReset may offer a free trial period for new subscribers. The length of the trial will be clearly stated at the time of sign-up. Your trial begins when you start it in the app and ends automatically at the conclusion of the stated period.</p>
-      <p>If you do not cancel before the trial ends, your chosen subscription will activate and your payment method will be charged. You can cancel at any time before the trial ends through the Google Play Store to avoid being charged.</p>
-    </section>
-
-    <section>
-      <h2>Subscriptions and billing</h2>
-      <p>Full access to DeskReset requires an active subscription. We offer the following plans:</p>
-      <ul>
-        <li><strong>Monthly</strong> — billed once per month</li>
-        <li><strong>Annual</strong> — billed once per year</li>
-      </ul>
-      <p>All subscriptions are processed and managed through the Google Play Store. Prices are displayed in the app before purchase and may vary by region. By subscribing you authorize Google Play to charge your payment method on a recurring basis at the stated interval.</p>
-      <p>We do not collect or store your payment information. All billing is handled by Google Play under their own terms and privacy policy.</p>
-    </section>
-
-    <section>
-      <h2>Cancellation and refunds</h2>
-      <p>You may cancel your subscription at any time through the Google Play Store (Play Store → Subscriptions → DeskReset → Cancel). Cancellation takes effect at the end of the current billing period — you will retain access until then.</p>
-      <p>We do not issue refunds for partial subscription periods. Refund requests for billing errors or exceptional circumstances may be submitted to Google Play in accordance with their refund policy, or to us at <a href="mailto:help@deskresetapp.info">help@deskresetapp.info</a>.</p>
-    </section>
-
-    <section>
-      <h2>Price changes</h2>
-      <p>We may change subscription prices at any time. If we increase the price of your current plan, we will notify you in advance through the app or by email. Price changes take effect at your next renewal. If you do not agree to a price change, you may cancel before the new price takes effect.</p>
-    </section>
-
-    <section>
-      <h2>Acceptable use</h2>
-      <p>You agree to use DeskReset only for its intended purpose as a personal wellness tool. You may not:</p>
-      <ul>
-        <li>Reverse engineer, decompile, or modify the app</li>
-        <li>Resell or sublicense access to the app</li>
-        <li>Use the app in any way that violates applicable law</li>
-        <li>Attempt to circumvent subscription or access controls</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Intellectual property</h2>
-      <p>All content in DeskReset — including exercise descriptions, workout programs, copy, graphics, and the DeskReset name and logo — is owned by Noah Allard and protected by applicable intellectual property law. Nothing in these Terms grants you any rights to that content beyond personal use of the app.</p>
-    </section>
-
-    <section>
-      <h2>Disclaimer of warranties</h2>
-      <p>DeskReset is provided "as is" and "as available" without warranties of any kind, express or implied. We do not warrant that the app will be uninterrupted, error-free, or free of harmful components. We make no warranty that the exercise content is appropriate for your individual fitness level or health status.</p>
-    </section>
-
-    <section>
-      <h2>Limitation of liability</h2>
-      <p>To the maximum extent permitted by applicable law, Noah Allard shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of your use of DeskReset, including but not limited to personal injury, property damage, or loss of data.</p>
-      <p>Our total liability to you for any claim arising from use of the app shall not exceed the amount you paid for your current subscription period.</p>
-    </section>
-
-    <section>
-      <h2>Governing law</h2>
-      <p>These Terms are governed by the laws of the State of Washington, USA, without regard to conflict of law principles. Any disputes arising from these Terms or your use of DeskReset shall be resolved in the courts of Washington State.</p>
-    </section>
-
-    <section>
-      <h2>Changes to these Terms</h2>
-      <p>We may update these Terms from time to time. When we do, we will update the "Last updated" date at the top of this page. If changes are material, we will notify you through the app or by email. Continued use of DeskReset after changes take effect constitutes acceptance of the revised Terms.</p>
-    </section>
-
-    <hr />
-
-    <section>
+      <div class="section-number">14</div>
       <h2>Contact us</h2>
       <div class="contact-box">
         <p>Questions about these Terms? Reach us at:</p>
-        <p><a href="mailto:help@deskresetapp.info">help@deskresetapp.info</a></p>
+        <a href="mailto:help@deskresetapp.info">
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          help@deskresetapp.info
+        </a>
       </div>
     </section>
 
   </main>
 
   <footer>
-    &copy; 2026 Noah Allard · DeskReset · All rights reserved
+    <div class="footer-wordmark">Desk<em>Reset</em></div>
+    <div class="footer-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 Noah Allard · All rights reserved</div>
   </footer>
 
 </body>
 </html>
+
